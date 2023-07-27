@@ -1,16 +1,16 @@
-# Instalación Klipper Ender 3 S1
+# Instalación de Klipper en Ender 3 S1
 
-En este caso, vamos a realizar la instalación de Klipper en una Ender 3 S1 utilizando un PC como servidor.
+En este tutorial, aprenderemos cómo instalar Klipper en una Ender 3 S1 utilizando un PC como servidor. Dependiendo de las especificaciones del equipo, se podrán controlar múltiples impresoras.
 
 ## Pasos:
 
-1. **Instalar Debian:** Primero, procedemos a instalar Debian en el ordenador desde la web oficial. Una vez completada la instalación, actualizamos los paquetes utilizando el siguiente comando:
+1. **Instalar Debian:** Comenzaremos instalando Debian (o la distribución de Linux de su elección) en el ordenador desde la web oficial. Después de la instalación, actualizaremos los paquetes con los siguientes comandos:
 
    ```bash
    sudo apt update && sudo apt upgrade
    ```
 
-2. **(Opcional) Eliminar paquetes innecesarios:** En este paso, eliminaremos los paquetes que no necesitamos para optimizar el rendimiento y reducir el consumo del servidor. Ejecutamos los siguientes comandos:
+2. **(Opcional) Eliminar paquetes innecesarios:** En este paso, optimizaremos el rendimiento y reduciremos el consumo del servidor, ya que se utilizará como servidor SSH. Ejecutamos los siguientes comandos para eliminar los paquetes innecesarios:
 
    ```bash
    sudo apt-get remove -y --purge x11-common
@@ -52,35 +52,59 @@ En este caso, vamos a realizar la instalación de Klipper en una Ender 3 S1 util
    sudo systemctl enable ssh
    ```
 
-   Esto activará SSH como un daemon, lo cual significa que se iniciará automáticamente en segundo plano al encender el ordenador.
+   Esto activará SSH como un servicio, lo cual significa que se iniciará automáticamente en segundo plano al encender el ordenador.
 
-7. **Instalar KIAUH, Mainsail, etc.:** Sigue el tutorial en este enlace para instalar KIAUH, Mainsail, y otros componentes necesarios: [Tutorial en YouTube](https://www.youtube.com/watch?v=Ib1Dd3rIE2I)
+7. **Instalar KIAUH, Mainsail, etc.:** Siga el tutorial en este enlace para instalar KIAUH, Mainsail y otros componentes necesarios: [Tutorial en YouTube](https://www.youtube.com/watch?v=Ib1Dd3rIE2I)
 
-8. **Instalar Klipper en la impresora:** Sigue el tutorial en este enlace para instalar Klipper en la Ender 3 S1: [Tutorial en 3DPrintBeginner](https://3dprintbeginner.com/how-to-install-klipper-on-ender-3-s1/)
+8. **Instalar Klipper en la impresora:** Siga el tutorial en este enlace para instalar Klipper en la Ender 3 S1: [Tutorial en 3DPrintBeginner](https://3dprintbeginner.com/how-to-install-klipper-on-ender-3-s1/)
 
-9. **(Opcional) Controlar el servidor utilizando htop:** Es recomendable utilizar htop para monitorear los servicios en ejecución. Instálalo ejecutando el siguiente comando:
+9. **(Opcional) Controlar el servidor utilizando htop:** Es recomendable utilizar htop para monitorear los servicios en ejecución. Instálelo ejecutando el siguiente comando:
 
    ```bash
    sudo apt install htop
    ```
    
-10. **(Opcional) Instalación Pi-hole:** Si no queremos utilizar la dirección IP asignada al servidor cada vez que queramos acceder a Mainsail para imprimir con Klipper, podemos instalar Pi-hole y configurar un servidor DNS. Sigue estos pasos:
+10. **(Opcional) Instalación de Pi-hole:** Si no desea utilizar la dirección IP asignada al servidor cada vez que acceda a Mainsail para imprimir con Klipper, puede instalar Pi-hole y configurar un servidor DNS. Siga estos pasos:
 
     ```bash
     wget -O basic-install.sh https://install.pi-hole.net
     sudo bash basic-install.sh
     ```
 
-    Una vez instalado, debemos cambiar el puerto utilizado por Pi-hole, ya que es el mismo que utiliza Mainsail para Klipper (puerto 80). Para ello, cambiamos la configuración en:
+    Una vez instalado, debe cambiar el puerto utilizado por Pi-hole, ya que es el mismo que utiliza Mainsail para Klipper (puerto 80). Para ello, cambie la configuración en:
 
     ```bash
     sudo nano /etc/lighttpd/lighttpd.conf
     ```
 
-    Y modificamos el parámetro `server.port = 80` para seleccionar un puerto que no esté ocupado por otro servicio. Luego, reiniciamos el servicio utilizando el siguiente comando:
+    Y modifique el parámetro `server.port = 80` para seleccionar un puerto que no esté ocupado por otro servicio. Luego, reinicie el servicio utilizando el siguiente comando:
 
     ```bash
     sudo service lighttpd restart
     ```
+    
+    Además, deberá habilitar una serie de puertos a través de los siguientes comandos:
+    
+    ```bash
+    sudo ufw allow 80/tcp
+    sudo ufw allow 53/tcp
+    sudo ufw allow 53/udp
+    sudo ufw allow 67/tcp
+    sudo ufw allow 67/udp
+    sudo ufw allow 546:547/udp
+    ```
+11. **Controlar la impresora desde un terminal:** Si deseas controlar tu impresora desde un dispositivo Android o iOS, puedes utilizar la aplicación MobileRacker. Para hacerlo, sigue estos pasos:
 
-¡Ahora estás listo para controlar tu impresora Ender 3 S1 con Klipper desde tu PC!
+    a. Descarga e instala la aplicación MobileRacker desde la tienda de aplicaciones.
+
+    b. Asegúrate de que tu dispositivo y el servidor donde está instalado Klipper estén conectados a la misma red Wi-Fi.
+
+    c. Abre MobileRacker en tu dispositivo y sigue las instrucciones para agregar una nueva impresora.
+
+    d. Ingresa la dirección IP del servidor donde está instalado Klipper.
+
+    e. Guarda la configuración y selecciona tu impresora desde la lista de impresoras disponibles en MobileRacker.
+
+    f. Ahora podrás controlar tu impresora, cargar archivos G-code y monitorear el progreso de la impresión directamente desde tu dispositivo.
+
+    Con estos pasos adicionales, podrás disfrutar de una experiencia de impresión más cómoda y flexible desde tu dispositivo móvil.
