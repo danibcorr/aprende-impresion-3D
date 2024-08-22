@@ -72,3 +72,12 @@ La combinación de estas configuraciones optimizará el proceso de impresión y 
 ## Klipper
 
 Calibración de resonancia para mantener la calidad de la impresión, permite reducir los tiempos, aumentar velocidades, etc.
+
+## Anotaciones variadas
+
+Mejorar la calidad de las impresiones:
+
++ Orden monotonico superior o inferior
++ Desplazamiento en modo peinado
+
+A mayor velocidad mayor a de ser la temperatura para fundir el plástico

@@ -1,11 +1,12 @@
-# 🤖 3DPrintingHub
+# 🤖 Aprende Impresión 3D
 
-¡Bienvenido/a a 3DPrintingHub, un repositorio dedicado a todo lo relacionado con la impresión 3D, el firmware Klipper y mucho más!. Este repositorio tiene como objetivo proporcionar recursos, guías y proyectos para mejorar tu experiencia en la impresión 3D.
+¡Bienvenido al repositorio "Aprende Impresión 3D"! Aquí encontrarás una recopilación de recursos, guías y proyectos diseñados para mejorar tu experiencia en el mundo de la impresión 3D. Desde configuraciones de firmware como Klipper hasta consejos avanzados de impresión, este repositorio es tu punto de partida para dominar la tecnología 3D.
 
-## 🗎 Introducción
+## 🧡 Cómo Contribuir
 
-3DPrintingHub es un repositorio con un enfoque especial en el firmware Klipper. Nuestro objetivo es crear un espacio colaborativo donde los entusiastas de la impresión 3D puedan compartir conocimientos, proyectos y las mejores prácticas. Ya sea que estés interesado en mejoras DIY para impresoras 3D, solucionar problemas o explorar configuraciones avanzadas con Klipper, encontrarás algo valioso aquí.
+Nos encanta recibir contribuciones de la comunidad. Aquí algunas formas en las que puedes ayudar:
 
-## 🧡 Contribuciones
-
-Agradecemos todas las contribuciones a 3DPrintingHub, ya sea a través de la corrección de errores, la adición de nuevas guías, la mejora de la documentación o la presentación de nuevos proyectos.
+- **Corrección de errores**: Encuentra y corrige errores en nuestras guías y documentación.
+- **Nuevas guías**: ¿Tienes conocimientos que no hemos cubierto? ¡Añade una nueva guía!
+- **Mejora de la documentación**: Ayúdanos a hacer que nuestras instrucciones sean aún más claras y completas.
+- **Proyectos nuevos**: Comparte tus proyectos de impresión 3D con la comunidad.
